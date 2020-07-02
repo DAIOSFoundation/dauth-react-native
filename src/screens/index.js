@@ -1,11 +1,8 @@
 import React from 'react';
-import Login from './login';
-import Register from './register';
-import Home from './home';
 import {Router, Scene, Stack} from 'react-native-router-flux';
-import Main from './Main';
-import Details from './Details';
-import MyPage from './MyPage';
+import Main from './main/Main';
+import Details from './details/Details';
+import MyPage from './myPage/MyPage';
 import {Image} from 'react-native';
 
 function Index() {
@@ -62,7 +59,6 @@ function Index() {
               key="Main"
               component={Main}
               hideNavBar
-
               // onEnter={onEnter}
             />
           </Scene>
@@ -90,18 +86,6 @@ function Index() {
               // onEnter={onEnter}
             />
           </Scene>
-          {/* <Scene
-            key="MyInfo"
-            title="MyInfo"
-            Screentitle="MyInfo"
-            icon={tabBarIcon}>
-            <Scene
-              key="mainScreen4"
-              component={MainScreen4}
-              hideNavBar
-              // onEnter={onEnter}
-            />
-          </Scene> */}
         </Scene>
       </Stack>
     </Router>
