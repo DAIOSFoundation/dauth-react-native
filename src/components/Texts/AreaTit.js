@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function AreaTit({children}) {
-  return <AreaTitile>{children}</AreaTitile>;
+function AreaTit({children, style}) {
+  return <AreaTitile style={style}>{children}</AreaTitile>;
 }
 
 export default AreaTit;
