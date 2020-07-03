@@ -1,5 +1,6 @@
 import React from 'react';
 import {Router, Scene, Stack} from 'react-native-router-flux';
+import Signup from './signup/Signup';
 import Main from './main/Main';
 import Details from './details/Details';
 import MyPage from './myPage/MyPage';
@@ -51,8 +52,8 @@ function Index() {
   return (
     <Router>
       <Stack key="root">
-        {/* <Scene key="login" component={Login} title="Login" />
-        <Scene key="register" component={Register} title="Register" /> */}
+        {/* <Scene key="login" component={Login} title="Login" /> */}
+        <Scene key="register" component={Signup} />
         <Scene tabs={true} showLabel={false}>
           <Scene key="Main" title="Main" icon={tabBarIcon}>
             <Scene
