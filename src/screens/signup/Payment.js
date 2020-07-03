@@ -1,98 +1,67 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import {Text, StyleSheet, SafeAreaView, TouchableOpacity} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import AreaTit from '../../components/Texts/AreaTit';
 import AreaSubTit from '../../components/Texts/AreaSubTit';
 import Inputs from '../../components/Inputs/Inputs';
-import StateButton from '../../components/Buttons/StateButton';
 import StageButton from '../../components/Buttons/StageButton';
 
-function Signup() {
+function Payment() {
   const onPress = () => {
-    Actions.Payment();
+    Actions.Complete();
   };
+
   return (
     <SafeAreaView>
       <Container>
         <Header>
-          <Title>회원가입</Title>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={Actions.pop}>
             <CancleIcon
-              source={require('../../assets/images/closeIcon/drawable-hdpi/icon_cancel_black.png')}
+              source={require('../../assets/images/backIcon/drawable-hdpi/icon_back.png')}
             />
           </TouchableOpacity>
+          <Title>결제 정보 입력</Title>
         </Header>
         <Contents>
           <Inner>
             <TextArea>
-              <AreaTit>DAuth 가입을 환영합니다.</AreaTit>
+              <AreaTit>결제 수단을 등록합니다.</AreaTit>
               <AreaTextBox>
                 <AreaSubTit>
-                  간단한 가입 절차를 진행하시고 세상에서 가장 안전한
+                  등록된 결제 수단을 통해 간편하게 결제를 하실 수 있습니다.
                 </AreaSubTit>
-                <AreaSubTit>본인인증 시스템을 경험해보세요.</AreaSubTit>
               </AreaTextBox>
             </TextArea>
             <Info>
               <InputArea>
-                <InputTit>아이디</InputTit>
-                <InputBox>
-                  <Inputs placeholder="사용하실 아이디를 입력하세요" />
-                  <StateButton>중복확인</StateButton>
-                </InputBox>
-              </InputArea>
-              <InputArea>
-                <InputTit>이름</InputTit>
-                <InputBox>
-                  <Inputs placeholder="이름을 입력하세요" />
-                </InputBox>
-              </InputArea>
-              <InputArea>
-                <InputTit>휴대폰 번호</InputTit>
+                <InputTit>카드번호</InputTit>
                 <InputBox>
                   <Inputs placeholder="'-' 구분 없이 입력하세요" />
                 </InputBox>
               </InputArea>
               <InputArea>
-                <InputTit>주민번호</InputTit>
+                <InputTit>유효기간</InputTit>
                 <InputBox>
-                  <Inputs placeholder="앞 여섯자리 숫자" />
-                  <InputText>-</InputText>
-                  <Inputs placeholder="뒤 일곱자리 숫자" />
+                  <Inputs placeholder="MM / YY" />
                 </InputBox>
               </InputArea>
               <InputArea>
-                <InputTit>주소</InputTit>
-                <InputBox style={styles.inputMargin}>
-                  <Inputs placeholder="우편주소" />
-                  <StateButton>주소찾기</StateButton>
-                </InputBox>
-                <InputBox style={styles.inputMargin}>
-                  <Inputs placeholder="기본 주소" />
-                </InputBox>
-                <InputBox style={styles.inputMargin}>
-                  <Inputs placeholder="상세 주소를 입력하세요" />
+                <InputTit>CVC</InputTit>
+                <InputBox>
+                  <Inputs placeholder="카드 뒷면 마지막 3자리를 입력하세요" />
                 </InputBox>
               </InputArea>
-              <AreaTextBox>
-                <AreaSubTit style={styles.notice}>
-                  입력하신 모든 개인 정보는 회원가입을 위한 절차이며,
-                </AreaSubTit>
-                <AreaSubTit style={styles.notice}>
-                  다른 용도로 사용되지 않습니다.
-                </AreaSubTit>
-              </AreaTextBox>
+              <InputArea>
+                <InputTit>카드 별칭</InputTit>
+                <InputBox>
+                  <Inputs placeholder="선택 입력" />
+                </InputBox>
+              </InputArea>
             </Info>
           </Inner>
           <StageBox>
-            <StageButton onPress={onPress}>다음</StageButton>
+            <StageButton onPress={onPress}>회원가입</StageButton>
           </StageBox>
         </Contents>
       </Container>
@@ -100,7 +69,7 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Payment;
 
 const styles = StyleSheet.create({
   inputMargin: {
@@ -119,13 +88,13 @@ const Container = styled.View`
 const Header = styled.View`
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
   padding: 13px 20px;
   border-bottom-width: 1px;
   border-bottom-color: #f7f7f7;
 `;
 
 const Title = styled.Text`
+  margin-left: 14px;
   font-size: 16px;
   color: #48515a;
 `;
@@ -143,6 +112,7 @@ const Contents = styled.View`
 
 const Inner = styled.View`
   padding: 0 20px;
+  height: 100%;
 `;
 
 const TextArea = styled.View`

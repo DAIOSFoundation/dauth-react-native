@@ -1,10 +1,12 @@
 import React from 'react';
 import {Router, Scene, Stack} from 'react-native-router-flux';
 import Signup from './signup/Signup';
+import Payment from './signup/Payment';
 import Main from './main/Main';
 import Details from './details/Details';
 import MyPage from './myPage/MyPage';
 import {Image} from 'react-native';
+import Complete from './signup/Complete';
 
 function Index() {
   const tabBarIcon = ({title, focused}) => {
@@ -53,8 +55,10 @@ function Index() {
     <Router>
       <Stack key="root">
         {/* <Scene key="login" component={Login} title="Login" /> */}
-        <Scene key="register" component={Signup} />
-        <Scene tabs={true} showLabel={false}>
+        <Scene key="Register" component={Signup} hideNavBar />
+        <Scene key="Payment" component={Payment} hideNavBar />
+        <Scene key="Complete" component={Complete} hideNavBar />
+        <Scene key="Main" tabs={true} showLabel={false}>
           <Scene key="Main" title="Main" icon={tabBarIcon}>
             <Scene
               key="Main"
