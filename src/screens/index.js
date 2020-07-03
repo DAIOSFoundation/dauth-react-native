@@ -58,38 +58,47 @@ function Index() {
         <Scene key="Register" component={Signup} hideNavBar />
         <Scene key="Payment" component={Payment} hideNavBar />
         <Scene key="Complete" component={Complete} hideNavBar />
-        <Scene key="Main" tabs={true} showLabel={false}>
-          <Scene key="Main" title="Main" icon={tabBarIcon}>
-            <Scene
+        <Scene key="Mainpage" tabs={true} showLabel={false}>
+          <Scene
+            key="Main"
+            title="Main"
+            icon={tabBarIcon}
+            hideNavBar
+            component={Main}>
+            {/* <Scene
               key="Main"
               component={Main}
               hideNavBar
-              // onEnter={onEnter}
-            />
+              onEnter={onEnter}
+            /> */}
           </Scene>
           <Scene
             key="Details"
             title="Details"
             Screentitle="Details"
-            icon={tabBarIcon}>
-            <Scene
+            icon={tabBarIcon}
+            component={Details}
+            hideNavBar>
+            {/* <Scene
               key="Details"
               component={Details}
               hideNavBar
-              // onEnter={onEnter}
-            />
+              onEnter={onEnter}
+            /> */}
           </Scene>
           <Scene
             key="MyPage"
             title="MyPage"
             Screentitle="MyPage"
-            icon={tabBarIcon}>
-            <Scene
+            icon={tabBarIcon}
+            component={MyPage}
+            hideNavBar>
+            {/* <Scene
               key="MyPage"
               component={MyPage}
               hideNavBar
-              // onEnter={onEnter}
-            />
+              onEnter={onEnter}
+            /> */}
           </Scene>
         </Scene>
       </Stack>
