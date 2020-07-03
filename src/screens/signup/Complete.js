@@ -7,7 +7,7 @@ import StageButton from '../../components/Buttons/StageButton';
 function Complete() {
   const onPress = () => {
     console.log('click main go');
-    Actions.Main();
+    Actions.Mainpage();
   };
   return (
     <SafeAreaView>
