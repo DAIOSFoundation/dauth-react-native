@@ -4,7 +4,7 @@ import styled from 'styled-components';
 function StateButton({children, style}) {
   return (
     <Button style={style}>
-      <ButtonText>{children}</ButtonText>
+      <ButtonText style={style}>{children}</ButtonText>
     </Button>
   );
 }

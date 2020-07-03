@@ -2,11 +2,11 @@ import React from 'react';
 import {Router, Scene, Stack} from 'react-native-router-flux';
 import Signup from './signup/Signup';
 import Payment from './signup/Payment';
+import Complete from './signup/Complete';
 import Main from './main/Main';
 import Details from './details/Details';
 import MyPage from './myPage/MyPage';
 import {Image} from 'react-native';
-import Complete from './signup/Complete';
 
 function Index() {
   const tabBarIcon = ({title, focused}) => {
