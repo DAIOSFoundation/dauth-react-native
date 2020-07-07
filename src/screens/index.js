@@ -55,9 +55,10 @@ function Index() {
     <Router>
       <Stack key="root">
         {/* <Scene key="login" component={Login} title="Login" /> */}
-        <Scene key="Register" component={Signup} hideNavBar />
-        <Scene key="Payment" component={Payment} hideNavBar />
-        <Scene key="Complete" component={Complete} hideNavBar />
+        {/* <Scene key="Test" component={Test} hideNavBar /> */}
+        {/* <Scene key="Register" component={Signup} hideNavBar /> */}
+        {/* <Scene key="Payment" component={Payment} hideNavBar />
+        <Scene key="Complete" component={Complete} hideNavBar /> */}
         <Scene key="Mainpage" tabs={true} showLabel={false}>
           <Scene
             key="Main"

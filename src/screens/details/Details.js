@@ -4,41 +4,121 @@ import {
   View,
   SafeAreaView,
   Image,
-  FlatList,
   ScrollView,
   TouchableWithoutFeedback,
+  TouchableOpacity,
+  Animated,
+  StyleSheet,
 } from 'react-native';
+import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import styled from 'styled-components';
 import pictogram from '../../assets/Detail/pictogram.png';
-import box from '../../assets/Detail/box.png';
 import DetailsCard from './DetailsCard';
+import EmptyCard from './EmptyCard';
 
 function Details() {
   const [pressTotal, setPressTotal] = useState(true);
   const [pressSearch, setPressSearch] = useState(false);
   const [pressAmend, setPressAmend] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [routes] = useState([
+    {key: 'first', title: '전체 내역'},
+    {key: 'second', title: '조회'},
+    {key: 'third', title: '변경'},
+  ]);
 
-  const handleTotal = () => {
-    setPressTotal(true);
-    setPressSearch(false);
-    setPressAmend(false);
-    console.log('전체 내역 : ', pressTotal);
+  const FirstRoute = () => <EmptyCard />;
+
+  const SecondRoute = () => (
+    <CardList>
+      <DetailsCard />
+    </CardList>
+  );
+
+  const ThirdRoute = () => (
+    <CardList>
+      <DetailsCard />
+    </CardList>
+  );
+
+  const renderScene = SceneMap({
+    first: FirstRoute,
+    second: SecondRoute,
+    third: ThirdRoute,
+  });
+
+  const handleClick = i => {
+    setIndex(i);
+    if (i === 0) {
+      setPressTotal(true);
+      setPressSearch(false);
+      setPressAmend(false);
+      console.log('전체 내역 : ', pressTotal);
+    }
+    if (i === 1) {
+      setPressSearch(true);
+      setPressTotal(false);
+      setPressAmend(false);
+      console.log('조회 : ', pressSearch);
+    }
+    if (i === 2) {
+      setPressAmend(true);
+      setPressTotal(false);
+      setPressSearch(false);
+      console.log('변경 : ', pressAmend);
+    }
   };
 
-  const handleSearch = () => {
-    setPressSearch(true);
-    setPressTotal(false);
-    setPressAmend(false);
+  renderTabBar = props => {
+    // const inputRange = props.navigationState.routes.map((x, i) => i);
 
-    console.log('조회 : ', pressSearch);
+    return (
+      <TabHeader>
+        {props.navigationState.routes.map((route, i) => {
+          // const color = Animated.color(
+          //   Animated.round(
+          //     Animated.interpolate(props.position, {
+          //       inputRange,
+          //       outputRange: inputRange.map(inputIndex =>
+          //         inputIndex === i ? 255 : 0,
+          //       ),
+          //     }),
+          //   ),
+          //   0,
+          //   0,
+          // );
+
+          return (
+            <TabList onPress={() => handleClick(i)}>
+              <TabTitle>{route.title}</TabTitle>
+              <TotalOval pressTotal={pressTotal} />
+            </TabList>
+          );
+        })}
+      </TabHeader>
+    );
   };
 
-  const handleAmend = () => {
-    setPressAmend(true);
-    setPressTotal(false);
-    setPressSearch(false);
-    console.log('변경 : ', pressAmend);
-  };
+  const TabHeader = styled.View`
+    flex-direction: row;
+    height: 58px;
+    justify-content: center;
+    align-items: center;
+  `;
+
+  const TabList = styled.TouchableOpacity`
+    width: 120px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  `;
+
+  const TabTitle = styled.Text`
+    font-size: 15px;
+    color: ${props => (props.pressTotal ? '#1d5187' : '#bfc8d1')};
+    text-align: center;
+    position: absolute;
+  `;
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#f5f7f9'}}>
@@ -54,34 +134,34 @@ function Details() {
           </View>
         </HeaderWrap>
         <TabBarMiddle>
-          <TouchableWithoutFeedback onPress={handleTotal}>
+          <TouchableWithoutFeedback>
             <TotalList>
               <TotalText pressTotal={pressTotal}>전체 내역</TotalText>
               <TotalOval pressTotal={pressTotal} />
             </TotalList>
           </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={handleSearch}>
+          <TouchableWithoutFeedback>
             <SearchList>
               <SearchText pressSearch={pressSearch}>조회</SearchText>
               <SearchOval pressSearch={pressSearch} />
             </SearchList>
           </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={handleAmend}>
+          <TouchableWithoutFeedback>
             <AmendList>
               <AmendText pressAmend={pressAmend}>변경</AmendText>
               <AmendOval pressAmend={pressAmend} />
             </AmendList>
           </TouchableWithoutFeedback>
         </TabBarMiddle>
-        <EmptyList>
-          <Image source={box} />
-          <EmptyText>내역이 존재하지 않습니다.</EmptyText>
-        </EmptyList>
-        <CardList>
-          <DetailsCard />
-          <DetailsCard />
-          <DetailsCard />
-        </CardList>
+        <TabView
+          navigationState={{index, routes}}
+          renderScene={renderScene}
+          onIndexChange={setIndex}
+          renderTabBar={renderTabBar}
+          // renderTabBar={props => (
+          //   <TabBar {...props} style={{backgroundColor: '#f6f8fa'}} />
+          // )}
+        />
       </ScrollView>
     </SafeAreaView>
   );
@@ -160,22 +240,6 @@ const AmendText = styled(TotalText)`
 
 const AmendOval = styled(TotalOval)`
   display: ${props => (props.pressAmend ? 'flex' : 'none')};
-`;
-
-const EmptyList = styled.View`
-  margin: 0 10px;
-  height: 148px;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 3px;
-`;
-
-const EmptyText = styled.Text`
-  font-size: 15px;
-  color: #bfc8d1;
-  padding-top: 15px;
 `;
 
 const CardList = styled.View`
