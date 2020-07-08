@@ -7,17 +7,19 @@
  */
 
 import React from 'react';
-
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import rootReducer from './src/store/reducers';
 import Index from './src/screens/index';
+
+const store = createStore(rootReducer, composeWithDevTools());
 
 const App: () => React$Node = () => {
   return (
-    // <>
-    //   <Index />
-    // </>
-    <>
+    <Provider store={store}>
       <Index />
-    </>
+    </Provider>
   );
 };
 
