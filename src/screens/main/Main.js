@@ -1,10 +1,21 @@
 import React from 'react';
-import {Text, View, SafeAreaView, Button, ScrollView} from 'react-native';
+import {
+  Text,
+  View,
+  SafeAreaView,
+  Button,
+  ScrollView,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import styled from 'styled-components';
 import MainCard from '../../components/MainCard';
 
 function Main() {
+  const goTerms = () => {
+    Actions.Terms();
+  };
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#f6f8fa'}}>
       <ScrollView>
@@ -21,7 +32,7 @@ function Main() {
           <TitleWrap>
             <TitleText>이용 약관</TitleText>
           </TitleWrap>
-          <MainCard>약관 및 이용 동의</MainCard>
+          <MainCard goTerms={goTerms}>약관 및 이용 동의</MainCard>
           <MainCard>개인정보 수집 및 이용 동의</MainCard>
           <MainCard>서비스 이용정책 및 이용 동의</MainCard>
 

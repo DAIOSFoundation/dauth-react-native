@@ -7,6 +7,7 @@ import Main from './main/Main';
 import Details from './details/Details';
 import MyPage from './myPage/MyPage';
 import {Image} from 'react-native';
+import Terms from './main/webView/Terms';
 
 function Index() {
   const tabBarIcon = ({title, focused}) => {
@@ -55,10 +56,9 @@ function Index() {
     <Router>
       <Stack key="root">
         {/* <Scene key="login" component={Login} title="Login" /> */}
-        {/* <Scene key="Test" component={Test} hideNavBar /> */}
-        <Scene key="Register" component={Signup} hideNavBar />
+        {/* <Scene key="Register" component={Signup} hideNavBar />
         <Scene key="Payment" component={Payment} hideNavBar />
-        <Scene key="Complete" component={Complete} hideNavBar />
+        <Scene key="Complete" component={Complete} hideNavBar /> */}
         <Scene key="Mainpage" tabs={true} showLabel={false}>
           <Scene
             key="Main"
@@ -66,12 +66,7 @@ function Index() {
             icon={tabBarIcon}
             hideNavBar
             component={Main}>
-            {/* <Scene
-              key="Main"
-              component={Main}
-              hideNavBar
-              onEnter={onEnter}
-            /> */}
+            {/* <Scene key="Terms" title="Terms" component={Terms} hideNavBar /> */}
           </Scene>
           <Scene
             key="Details"
@@ -102,6 +97,7 @@ function Index() {
             /> */}
           </Scene>
         </Scene>
+        <Scene key="Terms" title="Terms" component={Terms} hideNavBar />
       </Stack>
     </Router>
   );

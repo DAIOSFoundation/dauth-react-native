@@ -1,14 +1,16 @@
 import React from 'react';
-import {View, Text, Ima} from 'react-native';
+import {View, Text, Image, TouchableWithoutFeedback} from 'react-native';
 import styled from 'styled-components';
 import cardIcon from '../assets/Main/icon_jumparrow.png';
 
-export default function MainCard({children}) {
+export default function MainCard({children, goTerms}) {
   return (
-    <CardWrap>
-      <CardText>{children}</CardText>
-      <CardIcon source={cardIcon} />
-    </CardWrap>
+    <TouchableWithoutFeedback onPress={goTerms}>
+      <CardWrap>
+        <CardText>{children}</CardText>
+        <CardIcon source={cardIcon} />
+      </CardWrap>
+    </TouchableWithoutFeedback>
   );
 }
 

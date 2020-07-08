@@ -1,15 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  Text,
-  View,
-  SafeAreaView,
-  Image,
-  ScrollView,
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-  Animated,
-  StyleSheet,
-} from 'react-native';
+import {Text, View, SafeAreaView, Image, ScrollView} from 'react-native';
 import {TabView, SceneMap} from 'react-native-tab-view';
 import styled from 'styled-components';
 import pictogram from '../../assets/Detail/pictogram.png';
