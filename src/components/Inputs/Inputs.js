@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Inputs({placeholder}) {
-  return <Input placeholder={placeholder} />;
+function Inputs({placeholder, handleChange}) {
+  return <Input onChange={handleChange} placeholder={placeholder} />;
 }
 
 export default Inputs;

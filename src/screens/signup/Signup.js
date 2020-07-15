@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {
   Text,
@@ -13,11 +13,56 @@ import AreaSubTit from '../../components/Texts/AreaSubTit';
 import Inputs from '../../components/Inputs/Inputs';
 import StateButton from '../../components/Buttons/StateButton';
 import StageButton from '../../components/Buttons/StageButton';
+import {shallowEqual, useDispatch, useSelector} from 'react-redux';
+import * as signupActions from '../../store/modules/signup/actions';
 
 function Signup() {
+  const [userId, setUserId] = useState('');
+  const [userName, setUserName] = useState('');
+  const [phone, setPhone] = useState(0);
+
   const onPress = () => {
     Actions.Payment();
   };
+
+  const {
+    account,
+    password,
+    name,
+    phone_number,
+    birthday,
+    address,
+  } = useSelector(
+    state => ({
+      account: state.signup.account,
+      password: state.signup.password,
+      name: state.signup.name,
+      phone_number: state.signup.phone_number,
+      birthday: state.signup.birthday,
+      address: state.signup.address,
+    }),
+    shallowEqual,
+  );
+
+  const dispatch = useDispatch();
+
+  const handleChange = e => {
+    setUserId(e.nativeEvent);
+    console.log('유저 아이디 : ', userId);
+  };
+
+  const onSignup = useCallback(() => {
+    const params = {
+      account,
+      password,
+      name,
+      phone_number,
+      birthday,
+      address,
+    };
+    dispatch(signupActions.post_signup(params));
+  }, [account, address, birthday, dispatch, name, password, phone_number]);
+
   return (
     <SafeAreaView>
       <Container>
@@ -44,14 +89,29 @@ function Signup() {
               <InputArea>
                 <InputTit>아이디</InputTit>
                 <InputBox>
-                  <Inputs placeholder="사용하실 아이디를 입력하세요" />
+                  <Inputs
+                    handleChange={handleChange}
+                    placeholder="사용하실 아이디를 입력하세요"
+                  />
                   <StateButton>중복확인</StateButton>
+                </InputBox>
+              </InputArea>
+              <InputArea>
+                <InputTit>비밀번호</InputTit>
+                <InputBox>
+                  <Inputs
+                    handleChange={handleChange}
+                    placeholder="비밀번호를 입력하세요"
+                  />
                 </InputBox>
               </InputArea>
               <InputArea>
                 <InputTit>이름</InputTit>
                 <InputBox>
-                  <Inputs placeholder="이름을 입력하세요" />
+                  <Inputs
+                    handleChange={handleChange}
+                    placeholder="이름을 입력하세요"
+                  />
                 </InputBox>
               </InputArea>
               <InputArea>
