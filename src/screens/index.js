@@ -6,6 +6,7 @@ import Complete from './signup/Complete';
 import Main from './main/Main';
 import Details from './details/Details';
 import MyPage from './myPage/MyPage';
+import Modified from './myPage/Modified/Modified';
 import {Image} from 'react-native';
 import Terms from './main/webView/Terms';
 
@@ -89,12 +90,7 @@ function Index() {
             icon={tabBarIcon}
             component={MyPage}
             hideNavBar>
-            {/* <Scene
-              key="MyPage"
-              component={MyPage}
-              hideNavBar
-              onEnter={onEnter}
-            /> */}
+            <Scene key="Modified" component={Modified} hideNavBar />
           </Scene>
         </Scene>
         <Scene key="Terms" title="Terms" component={Terms} hideNavBar />
