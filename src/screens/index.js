@@ -6,6 +6,7 @@ import Complete from './signup/Complete';
 import Main from './main/Main';
 import Details from './details/Details';
 import MyPage from './myPage/MyPage';
+import Login from './login/Login';
 import Modified from './myPage/Modified/Modified';
 import {Image} from 'react-native';
 import Terms from './main/webView/Terms';
@@ -56,7 +57,11 @@ function Index() {
   return (
     <Router>
       <Stack key="root">
+<<<<<<< HEAD
         {/* <Scene key="login" component={Login} title="Login" /> */}
+=======
+        <Scene key="login" component={Login} title="Login" />
+>>>>>>> 26790f30... [Add] login, signup 페이지 리덕스 구현
         <Scene key="Register" component={Signup} hideNavBar />
         <Scene key="Payment" component={Payment} hideNavBar />
         <Scene key="Complete" component={Complete} hideNavBar />

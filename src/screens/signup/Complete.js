@@ -12,7 +12,7 @@ function Complete() {
     <SafeAreaView>
       <Container>
         <Contents>
-          <Innter>
+          <Inner>
             <CompleteImg
               source={require('../../assets/images/completeIcon/drawable-hdpi/icon_check_white.png')}
             />
@@ -21,7 +21,7 @@ function Complete() {
               <SubDesc>DAuth를 통해 세상에서 가장 안전한</SubDesc>
               <SubDesc>본인인증 시스템을 경험해보세요!</SubDesc>
             </TextArea>
-          </Innter>
+          </Inner>
           <StageBox>
             <StageButton style={styles.completeBtn} onPress={onPress}>
               확인
@@ -56,7 +56,7 @@ const Contents = styled.View`
   background-color: #1d5187;
 `;
 
-const Innter = styled.View`
+const Inner = styled.View`
   padding: 128px 65px 0;
   justify-content: center;
   align-items: center;

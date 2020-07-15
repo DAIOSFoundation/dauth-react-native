@@ -27,5 +27,6 @@ const Button = styled.TouchableOpacity`
 
 const ButtonText = styled.Text`
   font-size: 12px;
+  font-weight: 700;
   color: #1d5187;
 `;
