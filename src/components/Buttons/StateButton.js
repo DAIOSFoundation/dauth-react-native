@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function StateButton({children, style}) {
+function StateButton({children, style, onPress}) {
   return (
-    <Button style={style}>
+    <Button style={style} onPress={onPress}>
       <ButtonText style={style}>{children}</ButtonText>
     </Button>
   );

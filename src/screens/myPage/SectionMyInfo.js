@@ -1,24 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 import {StyleSheet} from 'react-native';
+import {Actions} from 'react-native-router-flux';
 import AreaTit from '../../components/Texts/AreaTit';
 import StateButton from '../../components/Buttons/StateButton';
 import Inputs from '../../components/Inputs/Inputs';
+import TextView from './TextView/TextView';
 
 function SectionMyInfo() {
+  const onPress = () => {
+    Actions.Modified();
+  };
   return (
     <Myinfo>
       <Wrapper>
         <TextArea>
           <AreaTit style={styles.title}>나의정보</AreaTit>
           <StageBox>
-            <StateButton>수정</StateButton>
+            <StateButton onPress={onPress}>수정</StateButton>
           </StageBox>
         </TextArea>
         <InputArea>
           <InputTit>아이디</InputTit>
           <InputBox>
-            <Inputs placeholder="아이디" />
+            <TextView>title</TextView>
           </InputBox>
         </InputArea>
         <InputArea>
