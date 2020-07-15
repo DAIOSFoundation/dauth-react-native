@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Text, SafeAreaView, StyleSheet, ScrollView} from 'react-native';
-import SectionMyInfo from '../SectionMyInfo';
-import SectionPayment from '../SectionMyPayment';
+import ModifiedMyInfo from './ModifiedMyInfo';
+import ModifiedMyPayment from './ModifiedMyPayment';
 
 function Modified() {
   return (
@@ -14,9 +14,9 @@ function Modified() {
           </Header>
           <Contents>
             <Inner>
-              <SectionMyInfo />
+              <ModifiedMyInfo />
               {/* ---------------------------- */}
-              <SectionPayment />
+              <ModifiedMyPayment />
             </Inner>
           </Contents>
         </Container>

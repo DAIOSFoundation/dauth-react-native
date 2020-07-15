@@ -89,11 +89,11 @@ function Index() {
             Screentitle="MyPage"
             icon={tabBarIcon}
             component={MyPage}
-            hideNavBar>
-            <Scene key="Modified" component={Modified} hideNavBar />
-          </Scene>
+            hideNavBar
+          />
         </Scene>
         <Scene key="Terms" title="Terms" component={Terms} hideNavBar />
+        <Scene key="Modified" component={Modified} hideNavBar />
       </Stack>
     </Router>
   );

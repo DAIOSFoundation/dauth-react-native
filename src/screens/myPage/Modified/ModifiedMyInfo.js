@@ -1,74 +1,57 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {StyleSheet} from 'react-native';
 import {Actions} from 'react-native-router-flux';
-import {shallowEqual, useDispatch, useSelector} from 'react-redux';
-import * as mypageActions from '../../store/modules/mypage/actions';
-import AreaTit from '../../components/Texts/AreaTit';
-import StateButton from '../../components/Buttons/StateButton';
-import TextView from './TextView/TextView';
+import AreaTit from '../../../components/Texts/AreaTit';
+import StateButton from '../../../components/Buttons/StateButton';
+import Inputs from '../../../components/Inputs/Inputs';
 
-function SectionMyInfo() {
-  const onPress = () => {
-    Actions.Modified();
-  };
-
-  const {name, account, phone_number, birthday, address} = useSelector(
-    state => ({
-      name: state.mypage.name,
-      account: state.mypage.account,
-      phone_number: state.mypage.phone_number,
-      birthday: state.mypage.birthday,
-      address: state.mypage.address,
-    }),
-    shallowEqual,
-  );
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log('useEffect');
-    dispatch(mypageActions.get_mypage());
-  }, [dispatch]);
+function ModifiedMyInfo() {
   return (
     <Myinfo>
       <Wrapper>
         <TextArea>
           <AreaTit style={styles.title}>나의정보</AreaTit>
           <StageBox>
-            <StateButton onPress={onPress}>수정</StateButton>
+            <StateButton>수정</StateButton>
           </StageBox>
         </TextArea>
         <InputArea>
           <InputTit>아이디</InputTit>
           <InputBox>
-            <TextView>{account}</TextView>
+            <Inputs placeholder="아이디" />
+          </InputBox>
+        </InputArea>
+        <InputArea>
+          <InputTit>이메일</InputTit>
+          <InputBox>
+            <Inputs placeholder="이메일" />
           </InputBox>
         </InputArea>
         <InputArea>
           <InputTit>이름</InputTit>
           <InputBox>
-            <TextView>{name}</TextView>
+            <Inputs placeholder="이름" />
           </InputBox>
         </InputArea>
         <InputArea>
           <InputTit>휴대폰 번호</InputTit>
           <InputBox>
-            <TextView>{phone_number}</TextView>
+            <Inputs placeholder="휴대폰 번호" />
           </InputBox>
         </InputArea>
         <InputArea>
           <InputTit>주민번호</InputTit>
           <InputBox>
-            <TextView>{birthday}</TextView>
+            <Inputs placeholder="앞 여섯자리 숫자" />
             <InputText>-</InputText>
-            <TextView>{birthday}</TextView>
+            <Inputs placeholder="뒤 일곱자리 숫자" />
           </InputBox>
         </InputArea>
         <InputArea>
           <InputTit>주소</InputTit>
           <InputBox>
-            <TextView>{address}</TextView>
+            <Inputs placeholder="주소" />
           </InputBox>
         </InputArea>
       </Wrapper>
@@ -76,7 +59,7 @@ function SectionMyInfo() {
   );
 }
 
-export default SectionMyInfo;
+export default ModifiedMyInfo;
 
 const styles = StyleSheet.create({
   title: {
