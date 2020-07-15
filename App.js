@@ -8,12 +8,10 @@
 
 import React from 'react';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import rootReducer from './src/store/reducers';
 import Index from './src/screens/index';
+import configure from './src/store/configure';
 
-const store = createStore(rootReducer, composeWithDevTools());
+const store = configure();
 
 const App: () => React$Node = () => {
   return (
