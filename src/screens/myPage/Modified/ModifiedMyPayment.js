@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import {StyleSheet} from 'react-native';
-import AreaTit from '../../components/Texts/AreaTit';
-import StateButton from '../../components/Buttons/StateButton';
-import Inputs from '../../components/Inputs/Inputs';
-import AreaSubTit from '../../components/Texts/AreaSubTit';
-import TextView from './TextView/TextView';
+import AreaTit from '../../../components/Texts/AreaTit';
+import StateButton from '../../../components/Buttons/StateButton';
+import Inputs from '../../../components/Inputs/Inputs';
+import AreaSubTit from '../../../components/Texts/AreaSubTit';
 
-function SectionMyPayment() {
+function ModifiedMyPayment() {
   return (
     <Payment>
       <Wrapper>
@@ -24,21 +23,21 @@ function SectionMyPayment() {
           <AreaSubTit>KB 국민카드 그린카드</AreaSubTit>
         </AreaTextBox>
         <InputArea>
-          <InputTit>카드번호</InputTit>
+          <InputTit>이메일</InputTit>
           <InputBox>
-            <TextView>title</TextView>
+            <Inputs placeholder="이메일" />
           </InputBox>
         </InputArea>
         <InputArea>
-          <InputTit>유효기간</InputTit>
+          <InputTit>이름</InputTit>
           <InputBox>
-            <TextView>title</TextView>
+            <Inputs placeholder="이름" />
           </InputBox>
         </InputArea>
         <InputArea>
-          <InputTit>CVC</InputTit>
+          <InputTit>휴대폰 번호</InputTit>
           <InputBox>
-            <TextView>title</TextView>
+            <Inputs placeholder="휴대폰 번호" />
           </InputBox>
         </InputArea>
       </Wrapper>
@@ -46,7 +45,7 @@ function SectionMyPayment() {
   );
 }
 
-export default SectionMyPayment;
+export default ModifiedMyPayment;
 
 const styles = StyleSheet.create({
   title: {

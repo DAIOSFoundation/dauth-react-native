@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import {View, Text} from 'react-native';
 
-function TextView({text}) {
-  console.log('text: ', text);
+function TextView({children}) {
+  console.log('text: ', children);
   return (
     <TextViews>
-      <Text>{text}</Text>
+      <TextTitle>{children}</TextTitle>
     </TextViews>
   );
 }
@@ -19,4 +18,9 @@ const TextViews = styled.View`
   border-bottom-color: #cbd0d5;
   font-size: 16px;
   padding-bottom: 4px;
+`;
+
+const TextTitle = styled.Text`
+  font-size: 14px;
+  color: #48515a;
 `;
