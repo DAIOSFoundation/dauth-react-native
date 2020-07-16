@@ -1,12 +1,6 @@
 import React, {useState, useCallback} from 'react';
 import styled from 'styled-components';
-import {
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import {Text, StyleSheet, SafeAreaView, TouchableOpacity} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import AreaTit from '../../components/Texts/AreaTit';
 import AreaSubTit from '../../components/Texts/AreaSubTit';
@@ -17,14 +11,6 @@ import {shallowEqual, useDispatch, useSelector} from 'react-redux';
 import * as signupActions from '../../store/modules/signup/actions';
 
 function Signup() {
-  const [userId, setUserId] = useState('');
-  const [userName, setUserName] = useState('');
-  const [phone, setPhone] = useState(0);
-
-  const onPress = () => {
-    Actions.Payment();
-  };
-
   const {
     account,
     password,
@@ -47,11 +33,31 @@ function Signup() {
   const dispatch = useDispatch();
 
   const handleChange = e => {
-    setUserId(e.nativeEvent);
-    console.log('유저 아이디 : ', userId);
+    const {text, name} = e;
+    console.log('value!!!', e);
+    if (name === 'account') {
+      dispatch(signupActions.change_account(text));
+    } else if (name === 'password') {
+      dispatch(signupActions.change_password(text));
+    } else if (name === 'name') {
+      dispatch(signupActions.change_name(text));
+    } else if (name === 'phone_number') {
+      dispatch(signupActions.change_phone_number(text));
+    } else if (name === 'birthday') {
+      dispatch(signupActions.change_birthday(text));
+    } else if (name === 'address') {
+      dispatch(signupActions.change_address(text));
+    }
   };
 
+  // const handlePassword = e => {
+  //   const {text} = e.nativeEvent;
+  //   console.log('password: ', e.nativeEvent.text);
+  //   dispatch(signupActions.change_password(text));
+  // };
+
   const onSignup = useCallback(() => {
+    Actions.Payment();
     const params = {
       account,
       password,
@@ -61,7 +67,7 @@ function Signup() {
       address,
     };
     dispatch(signupActions.post_signup(params));
-  }, [account, address, birthday, dispatch, name, password, phone_number]);
+  }, [account, address, birthday, name, password, phone_number]);
 
   return (
     <SafeAreaView>
@@ -91,6 +97,8 @@ function Signup() {
                 <InputBox>
                   <Inputs
                     handleChange={handleChange}
+                    name="account"
+                    // value={account}
                     placeholder="사용하실 아이디를 입력하세요"
                   />
                   <StateButton>중복확인</StateButton>
@@ -101,6 +109,9 @@ function Signup() {
                 <InputBox>
                   <Inputs
                     handleChange={handleChange}
+                    name="password"
+                    secureTextEntry="true"
+                    // value={password}
                     placeholder="비밀번호를 입력하세요"
                   />
                 </InputBox>
@@ -110,6 +121,8 @@ function Signup() {
                 <InputBox>
                   <Inputs
                     handleChange={handleChange}
+                    name="name"
+                    // value={name}
                     placeholder="이름을 입력하세요"
                   />
                 </InputBox>
@@ -117,28 +130,59 @@ function Signup() {
               <InputArea>
                 <InputTit>휴대폰 번호</InputTit>
                 <InputBox>
-                  <Inputs placeholder="'-' 구분 없이 입력하세요" />
+                  <Inputs
+                    handleChange={handleChange}
+                    name="phone_number"
+                    // value={phone_number}
+                    placeholder="'-' 구분 없이 입력하세요"
+                  />
                 </InputBox>
               </InputArea>
               <InputArea>
                 <InputTit>주민번호</InputTit>
                 <InputBox>
-                  <Inputs placeholder="앞 여섯자리 숫자" />
+                  <Inputs
+                    handleChange={handleChange}
+                    name="birthday"
+                    // value={birthday}
+                    placeholder="앞 여섯자리 숫자"
+                  />
                   <InputText>-</InputText>
-                  <Inputs placeholder="뒤 일곱자리 숫자" />
+                  <Inputs
+                    handleChange={handleChange}
+                    name="birthday"
+                    // value={birthday}
+                    placeholder="뒤 일곱자리 숫자"
+                    secureTextEntry="true"
+                  />
                 </InputBox>
               </InputArea>
               <InputArea>
                 <InputTit>주소</InputTit>
                 <InputBox style={styles.inputMargin}>
-                  <Inputs placeholder="우편주소" />
+                  <Inputs
+                    handleChange={handleChange}
+                    name="address"
+                    // value={address}
+                    placeholder="우편주소"
+                  />
                   <StateButton>주소찾기</StateButton>
                 </InputBox>
                 <InputBox style={styles.inputMargin}>
-                  <Inputs placeholder="기본 주소" />
+                  <Inputs
+                    handleChange={handleChange}
+                    name="address"
+                    // value={address}
+                    placeholder="기본 주소"
+                  />
                 </InputBox>
                 <InputBox style={styles.inputMargin}>
-                  <Inputs placeholder="상세 주소를 입력하세요" />
+                  <Inputs
+                    handleChange={handleChange}
+                    name="address"
+                    // value={address}
+                    placeholder="상세 주소를 입력하세요"
+                  />
                 </InputBox>
               </InputArea>
               <AreaTextBox>
@@ -152,7 +196,7 @@ function Signup() {
             </Info>
           </Inner>
           <StageBox>
-            <StageButton onPress={onPress}>다음</StageButton>
+            <StageButton onPress={onSignup}>다음</StageButton>
           </StageBox>
         </Contents>
       </Container>

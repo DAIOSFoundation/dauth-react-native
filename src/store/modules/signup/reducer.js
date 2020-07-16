@@ -14,7 +14,11 @@ const initialState = {
   jwt: '',
 };
 
+<<<<<<< HEAD
 const customer = handleActions(
+=======
+const signup = handleActions(
+>>>>>>> 26790f30... [Add] login, signup 페이지 리덕스 구현
   {
     [SIGNUP.CHANGE_ACCOUNT]: (state, action) => {
       return produce(state, draft => {
@@ -61,4 +65,8 @@ const customer = handleActions(
   },
   initialState,
 );
+<<<<<<< HEAD
 export default customer;
+=======
+export default signup;
+>>>>>>> 26790f30... [Add] login, signup 페이지 리덕스 구현

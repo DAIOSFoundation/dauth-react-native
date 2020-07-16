@@ -24,7 +24,11 @@ export const jsonUserTokenHeader = () => {
   return {
     'Content-Type': 'application/json',
     Authentication:
+<<<<<<< HEAD
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiaWF0IjoxNTk0NzkyMDk3fQ.y3kXFW4Nl31oIq0sxeoWY5MQcZ7b-tjroeAFe1bHXYE',
+=======
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNCwiaWF0IjoxNTk0NjMwNjQwfQ.YJjJIf_m_5cl0332FWn7KbngvrIwC1E9_h3mOTiMlh4',
+>>>>>>> 26790f30... [Add] login, signup 페이지 리덕스 구현
   };
 };
 
