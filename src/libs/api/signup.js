@@ -38,14 +38,6 @@ import RNFetchBlob from 'rn-fetch-blob';
 
 export const postSignup = params => {
   console.log('params!!!!: ', params);
-<<<<<<< HEAD
-  RNFetchBlob.fetch(
-    'POST',
-    'http://192.168.1.45:4000/account/mobile/m_register',
-    jsonUserTokenHeader(),
-    params,
-  );
-=======
   // RNFetchBlob.fetch(
   //   'POST',
   //   'http://192.168.1.45:4000/account/mobile/m_register',
@@ -56,5 +48,4 @@ export const postSignup = params => {
   //   .then(res => {
   //     console.log(res);
   //   });
->>>>>>> 26790f30... [Add] login, signup 페이지 리덕스 구현
 };
